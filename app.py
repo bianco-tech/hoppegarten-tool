@@ -501,7 +501,8 @@ def main() -> None:
             st.markdown("")
 
             # ── Per-horse cards ───────────────────────────────────────────
-            race_values = {}
+            race_values = {}       # name → value_score (for recommend_bet)
+            race_horse_odds = {}   # name → (odds_f, raw_kelly_eur, prob)
 
             for rank, (horse, prob) in enumerate(ranked, 1):
                 orig_idx = horses.index(horse)
@@ -563,6 +564,8 @@ def main() -> None:
                         val     = prob / implied
                         race_values[horse["name"]] = val
                         k_pct, k_eur = kelly(prob, odds_val, bankroll)
+                        # Store raw kelly (before display floor) for Wettschein
+                        race_horse_odds[horse["name"]] = (odds_val, k_eur, prob)
                         if k_eur < min_bet:
                             k_pct, k_eur = 0.0, 0.0
 
@@ -596,42 +599,46 @@ def main() -> None:
                 bet_horses_rec = [ranked[0][0]["name"]]
 
             # ── Always collect for Wettschein ─────────────────────────────
-            primary_name = bet_horses_rec[0]
-            ph = next((h for h in horses if h["name"] == primary_name), None)
-            if ph:
-                ph_orig_idx = horses.index(ph)
-                ph_odds_raw = st.session_state.get(f"odds_r{race_idx}_h{ph_orig_idx}")
-                ph_prob = next(p for h, p in ranked if h["name"] == primary_name)
-                race_time = race["time_conditions"].split("—")[-1].strip() if "—" in race.get("time_conditions", "") else ""
+            # Primary = highest-ranked horse for which odds were actually entered.
+            # Uses race_horse_odds (populated during rendering) — no session-state lookup.
+            race_time = (
+                race["time_conditions"].split("—")[-1].strip()
+                if "—" in race.get("time_conditions", "") else ""
+            )
+            best_with_odds = next(
+                ((h, p) for h, p in ranked if h["name"] in race_horse_odds),
+                None,
+            )
 
-                if ph_odds_raw and float(ph_odds_raw) > 1.01:
-                    ph_odds_f = float(ph_odds_raw)
-                    ph_val = ph_prob / (1.0 / ph_odds_f)
-                    _, raw_k = kelly(ph_prob, ph_odds_f, bankroll)
+            if best_with_odds:
+                ph, _ = best_with_odds
+                ph_odds_f, raw_k, ph_prob = race_horse_odds[ph["name"]]
+                ph_val = race_values[ph["name"]]
 
-                    if ph_val >= 1.25:
-                        tier = "strong"
-                        stake = max(raw_k, min_bet)
-                    elif ph_val >= 1.0:
-                        tier = "fair"
-                        stake = max(round(raw_k * 0.5, 2), min_bet)
-                    else:
-                        tier = "weak"
-                        stake = min_bet
-
-                    wettschein.append(dict(
-                        race_label=f"R{race['num']}", time=race_time,
-                        bet_type=bet_type_rec, horses=bet_horses_rec,
-                        odds=ph_odds_f, value=ph_val, tier=tier, stake=stake,
-                        has_odds=True,
-                    ))
+                if ph_val >= 1.25:
+                    tier, stake = "strong", max(raw_k, min_bet)
+                elif ph_val >= 1.0:
+                    tier, stake = "fair", max(round(raw_k * 0.5, 2), min_bet)
                 else:
-                    wettschein.append(dict(
-                        race_label=f"R{race['num']}", time=race_time,
-                        bet_type=bet_type_rec, horses=bet_horses_rec,
-                        odds=None, value=None, tier=None, stake=None,
-                        has_odds=False,
-                    ))
+                    tier, stake = "weak", min_bet
+
+                # Prefer the bet-recommender's horse list; fall back to primary horse
+                out_type   = bet_type_rec  if bet else "Platz"
+                out_horses = bet_horses_rec if bet else [ph["name"]]
+
+                wettschein.append(dict(
+                    race_label=f"R{race['num']}", time=race_time,
+                    bet_type=out_type, horses=out_horses,
+                    odds=ph_odds_f, value=ph_val, tier=tier, stake=stake,
+                    has_odds=True,
+                ))
+            else:
+                wettschein.append(dict(
+                    race_label=f"R{race['num']}", time=race_time,
+                    bet_type="Platz", horses=[ranked[0][0]["name"]],
+                    odds=None, value=None, tier=None, stake=None,
+                    has_odds=False,
+                ))
 
     # ─── Mein Wettschein ──────────────────────────────────────────────────────
     st.divider()

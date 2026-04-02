@@ -579,75 +579,116 @@ def main() -> None:
 
                 st.markdown("")
 
-            # ── Bet recommendation for this race ─────────────────────────
+            # ── Bet recommendation display ────────────────────────────────
             ranked_with_v = [(h, p, race_values.get(h["name"])) for h, p in ranked]
             bet = recommend_bet(ranked_with_v, len(horses))
 
             if bet:
-                bet_type, bet_horses = bet
+                bet_type_rec, bet_horses_rec = bet
                 st.markdown(
-                    f"**Empfehlung:** {bet_badge_html(bet_type)} &nbsp; "
-                    + " + ".join(f"**{n}**" for n in bet_horses),
+                    f"**Empfehlung:** {bet_badge_html(bet_type_rec)} &nbsp; "
+                    + " + ".join(f"**{n}**" for n in bet_horses_rec),
                     unsafe_allow_html=True,
                 )
-                # Collect for Wettschein
-                primary_horse_name = bet_horses[0]
-                ph = next((h for h in horses if h["name"] == primary_horse_name), None)
-                if ph:
-                    ph_orig_idx = horses.index(ph)
-                    ph_odds = st.session_state.get(f"odds_r{race_idx}_h{ph_orig_idx}")
-                    ph_prob = next(p for h, p in ranked if h["name"] == primary_horse_name)
-                    if ph_odds and float(ph_odds) > 1.01:
-                        ph_val = ph_prob / (1.0 / float(ph_odds))
-                        _, k_eur = kelly(ph_prob, float(ph_odds), bankroll)
-                        if k_eur < min_bet:
-                            k_eur = 0.0
-                        wettschein.append(dict(
-                            race_label=f"R{race['num']}",
-                            time=race["time_conditions"].split("—")[-1].strip() if "—" in race.get("time_conditions", "") else "",
-                            bet_type=bet_type,
-                            horses=bet_horses,
-                            odds=float(ph_odds),
-                            value=ph_val,
-                            stake=k_eur,
-                        ))
+            else:
+                # No odds yet — fall back to algo top horse
+                bet_type_rec = "Platz"
+                bet_horses_rec = [ranked[0][0]["name"]]
+
+            # ── Always collect for Wettschein ─────────────────────────────
+            primary_name = bet_horses_rec[0]
+            ph = next((h for h in horses if h["name"] == primary_name), None)
+            if ph:
+                ph_orig_idx = horses.index(ph)
+                ph_odds_raw = st.session_state.get(f"odds_r{race_idx}_h{ph_orig_idx}")
+                ph_prob = next(p for h, p in ranked if h["name"] == primary_name)
+                race_time = race["time_conditions"].split("—")[-1].strip() if "—" in race.get("time_conditions", "") else ""
+
+                if ph_odds_raw and float(ph_odds_raw) > 1.01:
+                    ph_odds_f = float(ph_odds_raw)
+                    ph_val = ph_prob / (1.0 / ph_odds_f)
+                    _, raw_k = kelly(ph_prob, ph_odds_f, bankroll)
+
+                    if ph_val >= 1.25:
+                        tier = "strong"
+                        stake = max(raw_k, min_bet)
+                    elif ph_val >= 1.0:
+                        tier = "fair"
+                        stake = max(round(raw_k * 0.5, 2), min_bet)
+                    else:
+                        tier = "weak"
+                        stake = min_bet
+
+                    wettschein.append(dict(
+                        race_label=f"R{race['num']}", time=race_time,
+                        bet_type=bet_type_rec, horses=bet_horses_rec,
+                        odds=ph_odds_f, value=ph_val, tier=tier, stake=stake,
+                        has_odds=True,
+                    ))
+                else:
+                    wettschein.append(dict(
+                        race_label=f"R{race['num']}", time=race_time,
+                        bet_type=bet_type_rec, horses=bet_horses_rec,
+                        odds=None, value=None, tier=None, stake=None,
+                        has_odds=False,
+                    ))
 
     # ─── Mein Wettschein ──────────────────────────────────────────────────────
     st.divider()
     st.markdown("## 🎫 Mein Wettschein")
 
     if not wettschein:
-        st.info(
-            "Noch keine auswertbaren Quoten eingegeben.  \n"
-            "Sobald du Quoten einträgst und Value ≥ 1.0 erreicht wird, erscheinen die Bets hier."
-        )
+        st.info("Rennen werden nach dem Laden hier aufgelistet.")
     else:
-        total_stake = sum(r["stake"] for r in wettschein)
-        total_races = len(wettschein)
+        rows_with_odds = [r for r in wettschein if r["has_odds"]]
+        total_stake = sum(r["stake"] for r in rows_with_odds)
 
         for row in wettschein:
             time_str = f" · {row['time']}" if row["time"] else ""
             horses_str = " + ".join(row["horses"])
-            val_color = "#16a34a" if row["value"] >= 1.25 else ("#ca8a04" if row["value"] >= 1.0 else "#dc2626")
 
-            st.markdown(
-                f'<div class="schein-row schein-row-value">'
-                f'<span style="font-weight:700;min-width:60px">{row["race_label"]}{time_str}</span>'
-                f'&nbsp;{bet_badge_html(row["bet_type"])}&nbsp;'
-                f'<span style="flex:1">{horses_str}</span>'
-                f'<span style="color:#6b7280">@{row["odds"]:.2f}</span>'
-                f'<span style="color:{val_color};font-weight:700">{row["value"]:.2f}×</span>'
-                f'<span style="font-weight:800;color:#16a34a;min-width:50px;text-align:right">€{row["stake"]:.0f}</span>'
-                f'</div>',
-                unsafe_allow_html=True,
-            )
+            if not row["has_odds"]:
+                st.markdown(
+                    f'<div class="schein-row" style="opacity:0.50">'
+                    f'<span style="font-weight:700;min-width:60px">{row["race_label"]}{time_str}</span>'
+                    f'&nbsp;{bet_badge_html(row["bet_type"])}&nbsp;'
+                    f'<span style="flex:1">{horses_str}</span>'
+                    f'<span style="color:#9ca3af;font-style:italic">— Quote fehlt</span>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                tier = row["tier"]
+                if tier == "strong":
+                    icon, val_color = "🟢", "#16a34a"
+                elif tier == "fair":
+                    icon, val_color = "🟡", "#ca8a04"
+                else:
+                    icon, val_color = "🔴", "#dc2626"
+
+                stake_str = f"€{row['stake']:.0f}" if row["stake"] else f"€{min_bet:.0f} min"
+
+                st.markdown(
+                    f'<div class="schein-row schein-row-value">'
+                    f'<span style="font-weight:700;min-width:60px">{row["race_label"]}{time_str}</span>'
+                    f'&nbsp;{bet_badge_html(row["bet_type"])}&nbsp;'
+                    f'<span style="flex:1">{horses_str}</span>'
+                    f'<span style="color:#6b7280">@{row["odds"]:.2f}</span>'
+                    f'<span style="color:{val_color};font-weight:700">{icon} {row["value"]:.2f}×</span>'
+                    f'<span style="font-weight:800;color:{val_color};min-width:50px;text-align:right">{stake_str}</span>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
 
         # Totals
         st.markdown("")
         tc1, tc2, tc3 = st.columns(3)
-        tc1.metric("Wetten", total_races)
-        tc2.metric("Gesamteinsatz", f"€{total_stake:.0f}")
-        tc3.metric("Bankroll-Anteil", f"{total_stake/bankroll*100:.1f}%")
+        tc1.metric("Rennen gesamt", len(wettschein))
+        tc2.metric("Gesamteinsatz", f"€{total_stake:.0f}" if total_stake > 0 else "—")
+        tc3.metric(
+            "Bankroll-Anteil",
+            f"{total_stake / bankroll * 100:.1f}%" if total_stake > 0 else "—",
+        )
 
     st.divider()
     st.caption(

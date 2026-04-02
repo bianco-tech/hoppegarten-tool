@@ -54,7 +54,7 @@ st.markdown("""
 
 # ─── Constants ────────────────────────────────────────────────────────────────
 GROUND_OPTIONS = ["gut", "gut-weich", "weich", "schwer", "fest"]
-GROUND_CODES: dict[str, set[str]] = {
+GROUND_CODES = {
     "gut":       {"g"},
     "gut-weich": {"g", "w"},
     "weich":     {"w"},
@@ -67,10 +67,10 @@ AGE_SCORES = {3: 0.60, 4: 0.90, 5: 1.00, 6: 0.90, 7: 0.70, 8: 0.50}
 
 # ─── Parsing ──────────────────────────────────────────────────────────────────
 @st.cache_data(ttl=30)
-def load_races(path: str) -> list[dict]:
+def load_races(path: str) -> list:
     content = Path(path).read_text(encoding="utf-8")
     race_blocks = re.split(r"(?m)^# Race\s+", content)
-    races: list[dict] = []
+    races = []
 
     for block in race_blocks[1:]:
         lines = block.split("\n")
@@ -84,7 +84,7 @@ def load_races(path: str) -> list[dict]:
         time_conditions = header_parts[4] if len(header_parts) > 4 else ""
 
         # ── Notes (comment lines before first ##) ──
-        notes: list[tuple[str, str]] = []  # (category, text)
+        notes = []  # list of (category, text)
         for line in lines[1:]:
             stripped = line.strip()
             if stripped.startswith("## ") or (stripped.startswith("## ") is False and
@@ -110,7 +110,7 @@ def load_races(path: str) -> list[dict]:
         rest = "\n".join(lines[1:])
         horse_blocks = re.split(r"(?m)^## ", rest)
 
-        horses: list[dict] = []
+        horses = []
         for hblock in horse_blocks:
             hblock = hblock.strip()
             if not hblock:
@@ -181,7 +181,7 @@ def load_races(path: str) -> list[dict]:
 
 
 # ─── Form parsing ─────────────────────────────────────────────────────────────
-def parse_form_runs(form_str: str) -> list[tuple[str, int]]:
+def parse_form_runs(form_str: str) -> list:
     """Return (ground_code, position) tuples. Most recent first (as listed)."""
     if form_str.strip() in ("-", "", "0"):
         return []
@@ -208,7 +208,7 @@ def pos_points(pos: int) -> float:
     return {1: 100, 2: 80, 3: 60, 4: 40}.get(pos, 20)
 
 
-def score_form(form_str: str, today_codes: set[str]) -> float:
+def score_form(form_str: str, today_codes: set) -> float:
     """Form score [0,1] with ground-matching bonus, ignoring Sand runs."""
     runs = parse_form_runs(form_str)
     grass_runs = [(g, p) for g, p in runs if g.upper() != "S"]
@@ -227,7 +227,7 @@ def score_form(form_str: str, today_codes: set[str]) -> float:
     return total / max_possible if max_possible else 0.50
 
 
-def ground_compat(form_str: str, today_codes: set[str]) -> str:
+def ground_compat(form_str: str, today_codes: set) -> str:
     """Return '✅', '⚠️', '❌', or '?' for ground compatibility."""
     runs = parse_form_runs(form_str)
     grass = [(g, p) for g, p in runs if g.upper() != "S"]
@@ -257,7 +257,7 @@ def score_career(starts: int, wins: int) -> float:
     return min(wins / starts, 0.50) / 0.50
 
 
-def score_weight(horse_kg: float, field_kg: list[float]) -> float:
+def score_weight(horse_kg: float, field_kg: list) -> float:
     avg = sum(field_kg) / len(field_kg) if field_kg else horse_kg
     penalty = max(0.0, horse_kg - avg)
     return max(0.0, 1.0 - penalty / 10.0)
@@ -267,7 +267,7 @@ def score_age(age: int) -> float:
     return AGE_SCORES.get(age, 0.40)
 
 
-def composite(horse: dict, field_kg: list[float], today_codes: set[str]) -> float:
+def composite(horse: dict, field_kg: list, today_codes: set) -> float:
     f = score_form(horse["form"], today_codes)
     j = score_jockey(horse["jockey_rate"])
     d = score_distance(horse["distance"])
@@ -282,7 +282,7 @@ def composite(horse: dict, field_kg: list[float], today_codes: set[str]) -> floa
     return raw * 1.10 if horse["expert_tip"] else raw
 
 
-def race_probs(horses: list[dict], today_codes: set[str]) -> list[float]:
+def race_probs(horses: list, today_codes: set) -> list:
     field_kg = [h["weight"] for h in horses]
     scores = [composite(h, field_kg, today_codes) for h in horses]
     total = sum(scores) or 1.0
@@ -290,7 +290,7 @@ def race_probs(horses: list[dict], today_codes: set[str]) -> list[float]:
 
 
 # ─── Kelly ────────────────────────────────────────────────────────────────────
-def kelly(est_prob: float, decimal_odds: float, bankroll: float) -> tuple[float, float]:
+def kelly(est_prob: float, decimal_odds: float, bankroll: float) -> tuple:
     """Half-Kelly, capped at 25%. Returns (pct, eur)."""
     if decimal_odds <= 1.0 or est_prob <= 0:
         return 0.0, 0.0
@@ -304,9 +304,9 @@ def kelly(est_prob: float, decimal_odds: float, bankroll: float) -> tuple[float,
 
 # ─── Bet type recommender ─────────────────────────────────────────────────────
 def recommend_bet(
-    ranked: list[tuple[dict, float, float | None]],   # (horse, prob, value_or_None)
+    ranked: list,  # list of (horse, prob, value_or_None)
     n_runners: int,
-) -> tuple[str, list[str]] | None:
+) -> tuple:  # (bet_type, horse_names) or None
     """Pick best bet type given available value scores. Returns (type, names) or None."""
     with_v = [(h, p, v) for h, p, v in ranked if v is not None]
     if not with_v:
@@ -450,7 +450,7 @@ def main() -> None:
         st.stop()
 
     # ── Per-race rendering ────────────────────────────────────────────────────
-    wettschein: list[dict] = []
+    wettschein = []
 
     for race_idx, race in enumerate(races):
         horses = race["horses"]
@@ -496,7 +496,7 @@ def main() -> None:
             st.markdown("")
 
             # ── Per-horse cards ───────────────────────────────────────────
-            race_values: dict[str, float] = {}
+            race_values = {}
 
             for rank, (horse, prob) in enumerate(ranked, 1):
                 orig_idx = horses.index(horse)

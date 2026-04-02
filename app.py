@@ -404,7 +404,12 @@ def main() -> None:
     with st.sidebar:
         st.markdown("## ⚙️ Einstellungen")
         bankroll = st.number_input(
-            "Bankroll (€)", min_value=10.0, max_value=1_000_000.0, value=500.0, step=50.0,
+            "Bankroll (€)", min_value=10.0, max_value=1_000_000.0, value=500.0, step=10.0,
+        )
+        min_bet = st.number_input(
+            "Min. Einsatz pro Wette (€)",
+            min_value=0.50, max_value=100.0, value=2.0, step=0.50,
+            help="Toto-Minimum: €2.00. Kelly-Empfehlungen unter diesem Betrag werden auf 0 gesetzt.",
         )
         st.markdown("**Globaler Bodenzustand**")
         global_ground = st.selectbox("Boden", GROUND_OPTIONS, index=0)
@@ -558,6 +563,8 @@ def main() -> None:
                         val     = prob / implied
                         race_values[horse["name"]] = val
                         k_pct, k_eur = kelly(prob, odds_val, bankroll)
+                        if k_eur < min_bet:
+                            k_pct, k_eur = 0.0, 0.0
 
                         r1, r2, r3 = st.columns([3, 2, 2])
                         with r1:
@@ -593,6 +600,8 @@ def main() -> None:
                     if ph_odds and float(ph_odds) > 1.01:
                         ph_val = ph_prob / (1.0 / float(ph_odds))
                         _, k_eur = kelly(ph_prob, float(ph_odds), bankroll)
+                        if k_eur < min_bet:
+                            k_eur = 0.0
                         wettschein.append(dict(
                             race_label=f"R{race['num']}",
                             time=race["time_conditions"].split("—")[-1].strip() if "—" in race.get("time_conditions", "") else "",

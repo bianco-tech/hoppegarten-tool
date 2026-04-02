@@ -1,418 +1,791 @@
+# HOPPEGARTEN — 5. April 2026 | Große Saisoneröffnung
+# Format: Form = Boden+Platz (g=gut, w=weich, s=schwer, f=fest, S=Sand)
+# Algorithmus-Felder: Jockey(winrate%), Weight(kg), Age, Career(starts/wins), Season2025(starts/wins/placed), Form(letzten 10), DistancePref, ExpertTip
+
+# ═══════════════════════════════════════════════════════
 # Race 1 | 1800m | €10,000 | 6 runners | Sparkassen-Eröffnungsrennen — 11:14 Uhr
-# 3-jährige Debütanten, keine Vorform
+# HINWEIS: Reine 3-jährige Debütanten — KEINE Vorform. Nur Jockey + Trainer zählen.
+# ═══════════════════════════════════════════════════════
 
 ## Atlantic Seaboard
-Jockey: Leon Wolff (18%)
+Jockey: Leon Wolff (15%)
 Trainer: Henk Grewe
-Form: -,-,-,-,-
-Distance: neutral
+Weight: 58.0
+Age: 3
+Career: 0/0
+Season2025: 0/0/0
+Form: -
+DistancePref: neutral
+ExpertTip: no
 
 ## Gegenwind
-Jockey: Martin Seidl (14%)
+Jockey: Martin Seidl (9%)
 Trainer: Maxim Pecheur
-Form: -,-,-,-,-
-Distance: neutral
+Weight: 58.0
+Age: 3
+Career: 0/0
+Season2025: 0/0/0
+Form: -
+DistancePref: neutral
+ExpertTip: no
 
 ## Waladares
-Jockey: Rene Piechulek (20%)
+Jockey: Rene Piechulek (17%)
 Trainer: Sarah Steinberg
-Form: -,-,-,-,-
-Distance: neutral
+Weight: 58.0
+Age: 3
+Career: 0/0
+Season2025: 0/0/0
+Form: -
+DistancePref: neutral
+ExpertTip: no
 
 ## Blue Japan
-Jockey: Sibylle Vogt (10%)
+Jockey: Sibylle Vogt (19%)
 Trainer: Marco Angermann
-Form: -,-,-,-,-
-Distance: neutral
+Weight: 56.5
+Age: 3
+Career: 0/0
+Season2025: 0/0/0
+Form: -
+DistancePref: neutral
+ExpertTip: no
 
 ## Dawinia
-Jockey: Thore Hammer-Hansen (24%)
+Jockey: Thore Hammer-Hansen (7%)
 Trainer: Maxim Pecheur
-Form: -,-,-,-,-
-Distance: neutral
+Weight: 56.5
+Age: 3
+Career: 0/0
+Season2025: 0/0/0
+Form: -
+DistancePref: neutral
+ExpertTip: no
 
 ## La Virginie
-Jockey: Eduardo Pedroza (16%)
+Jockey: Eduardo Pedroza (25%)
 Trainer: Andreas Wöhler
-Form: -,-,-,-,-
-Distance: neutral
+Weight: 56.5
+Age: 3
+Career: 0/0
+Season2025: 0/0/0
+Form: -
+DistancePref: neutral
+ExpertTip: no
 
+# ═══════════════════════════════════════════════════════
 # Race 2 | 2000m | €10,000 | 6 runners | BARG-Rennen Stutenrennen — 11:46 Uhr
+# HINWEIS: 3-jährige Stuten, max. 1 Sieg. Sehr wenig Vorform.
+# Murzabayev Comeback-Start auf Nachteule
+# ═══════════════════════════════════════════════════════
 
 ## Gua Lipa
 Jockey: Andrea Ricupa (10%)
 Trainer: Andreas Suborics
-Form: W,L,-,-,-
-Distance: good
+Weight: 58.0
+Age: 3
+Career: 2/1
+Season2025: 2/1/0
+Form: g1,g5
+DistancePref: good
+ExpertTip: no
 
 ## Allez La Grise
-Jockey: Wladimir Panov (10%)
+Jockey: Wladimir Panov (0%)
 Trainer: Bohumil Nedorostek
-Form: P,P,P,-,-
-Distance: neutral
+Weight: 59.0
+Age: 3
+Career: 3/0
+Season2025: 3/0/3
+Form: w2,w2,g3
+DistancePref: neutral
+ExpertTip: no
 
 ## Nachteule
-Jockey: Bauyrzhan Murzabayev (22%)
+Jockey: Bauyrzhan Murzabayev (15%)
 Trainer: Peter Schiergen
-Form: -,-,-,-,-
-Distance: neutral
+Weight: 58.0
+Age: 3
+Career: 0/0
+Season2025: 0/0/0
+Form: -
+DistancePref: neutral
+ExpertTip: yes
 
 ## Pearl of Japan
-Jockey: Vanesa Csernak (9%)
+Jockey: Vanesa Csernak (5%)
 Trainer: Bohumil Nedorostek
-Form: L,-,-,-,-
-Distance: neutral
+Weight: 55.0
+Age: 3
+Career: 1/0
+Season2025: 1/0/0
+Form: w7
+DistancePref: neutral
+ExpertTip: no
 
 ## Wie wunderbar
-Jockey: Rene Piechulek (20%)
+Jockey: Rene Piechulek (17%)
 Trainer: Sarah Steinberg
-Form: -,-,-,-,-
-Distance: neutral
+Weight: 58.0
+Age: 3
+Career: 0/0
+Season2025: 0/0/0
+Form: -
+DistancePref: neutral
+ExpertTip: no
 
 ## Zabeel Dream
-Jockey: Eduardo Pedroza (16%)
+Jockey: Eduardo Pedroza (25%)
 Trainer: Andreas Wöhler
-Form: L,-,-,-,-
-Distance: neutral
+Weight: 58.0
+Age: 3
+Career: 1/0
+Season2025: 1/0/0
+Form: w5
+DistancePref: neutral
+ExpertTip: no
 
+# ═══════════════════════════════════════════════════════
 # Race 3 | 2800m | €30,000 | 8 runners | Altano-Rennen (Listenrennen) — 12:18 Uhr
-# Favorit: Flatten the Curve — Vorjahressieger, in DE ungeschlagen (4 Siege 2025)
+# Programmtipp: Flatten the Curve – Narrativo – Waldadler
+# HINWEIS: Flatten the Curve in DE noch ungeschlagen (4 Siege 2025), Vorjahressieger
+# Narrativo im Rating über Flatten the Curve, läuft erstmals auf reiner Steherdistanz
+# ═══════════════════════════════════════════════════════
 
 ## Flatten the Curve
-Jockey: Thore Hammer-Hansen (24%)
+Jockey: Thore Hammer-Hansen (7%)
 Trainer: Henk Grewe
-Form: W,W,W,W,W
-Distance: good
+Weight: 58.0
+Age: 7
+Career: 42/8
+Season2025: 6/4/0
+Form: g13,f1,g1,S4,g1,g1,w1,w1,g11,w7
+DistancePref: good
+ExpertTip: yes
 
 ## Kämpfer
-Jockey: Rene Piechulek (20%)
+Jockey: Rene Piechulek (17%)
 Trainer: Sarah Steinberg
-Form: W,W,W,W,L
-Distance: good
+Weight: 58.0
+Age: 5
+Career: 6/4
+Season2025: 6/4/0
+Form: s0,w1,g1,w1,g1,g6
+DistancePref: good
+ExpertTip: no
 
 ## Waldadler
-Jockey: David Liska (12%)
+Jockey: David Liska (0%)
 Trainer: Pavel Vovcenko
-Form: W,P,P,P,P
-Distance: good
+Weight: 58.0
+Age: 7
+Career: 35/4
+Season2025: 7/1/3
+Form: w6,g4,g1,g5,g2,g3,g2,w8,g6,g4
+DistancePref: good
+ExpertTip: yes
 
 ## Duke of Lips
-Jockey: Jaromir Safar (8%)
+Jockey: Jaromir Safar (0%)
 Trainer: Eva Fabianova
-Form: P,W,W,L,L
-Distance: neutral
+Weight: 57.0
+Age: 9
+Career: 19/6
+Season2025: 0/0/0
+Form: g6,g7,g3,g6,g7,g6,s3,s1,g1,g3
+DistancePref: neutral
+ExpertTip: no
 
 ## Narrativo
-Jockey: Leon Wolff (18%)
+Jockey: Leon Wolff (15%)
 Trainer: Peter Schiergen
-Form: P,L,L,P,W
-Distance: bad
+Weight: 57.0
+Age: 5
+Career: 10/2
+Season2025: 3/0/1
+Form: g6,g2,g8,g3,g2,g14,g1,s3,g2,w1
+DistancePref: bad
+ExpertTip: yes
 
 ## Partnun
-Jockey: Michal Abik (10%)
+Jockey: Michal Abik (15%)
 Trainer: Waldemar Hickst
-Form: W,P,P,P,P
-Distance: neutral
+Weight: 56.5
+Age: 6
+Career: 22/3
+Season2025: 8/1/4
+Form: w3,s1,w2,g2,w3,g7,g7,g6,w7,w1
+DistancePref: neutral
+ExpertTip: no
 
 ## Ruby Lips
-Jockey: Martin Seidl (14%)
+Jockey: Martin Seidl (9%)
 Trainer: Eva Fabianova
-Form: W,P,W,P,P
-Distance: neutral
+Weight: 56.5
+Age: 4
+Career: 8/2
+Season2025: 8/2/3
+Form: w6,g1,g3,w1,g3,w2,g5,g4
+DistancePref: neutral
+ExpertTip: no
 
 ## Techno Beat
-Jockey: Eduardo Pedroza (16%)
+Jockey: Eduardo Pedroza (25%)
 Trainer: Andreas Wöhler
-Form: P,L,P,L,L
-Distance: neutral
+Weight: 55.5
+Age: 5
+Career: 12/1
+Season2025: 3/0/2
+Form: w2,g5,g2,g11,w4,g8,g1,g7,w4,w4
+DistancePref: neutral
+ExpertTip: no
 
+# ═══════════════════════════════════════════════════════
 # Race 4 | 1800m | €7,200 | 10 runners | Wettstar.de-Rennen Ausgleich IV — 12:50 Uhr
-# Viererwette Garantie 10.000€ — Expertentipp: Hiddensee–Aral–Inci–Tres Chic
+# Viererwette: Garantierte Auszahlung 10.000€
+# Programmtipp: Hiddensee – Aral – Inci – Tres Chic
+# Experten-Konsens: Tres Chic (Jan Korpas: "riesen Satz nach vorne gemacht")
+# Aral (2x Sieger Dortmund Sand, guter Start Gras erwartet)
+# HINWEIS: Viele Sandspezialisten — Boden "gut" bevorzugt andere Pferde
+# ═══════════════════════════════════════════════════════
 
 ## Lanciano Bello
-Jockey: Leon Wolff (18%)
+Jockey: Leon Wolff (15%)
 Trainer: Frederic Mehl
-Form: L,L,L,P,L
-Distance: bad
+Weight: 59.5
+Age: 5
+Career: 7/0
+Season2025: 3/0/1
+Form: S5,S8,S8,w11,w2,w4,g5
+DistancePref: bad
+ExpertTip: no
 
 ## Aventura
-Jockey: Benjamin Marie (9%)
+Jockey: Benjamin Marie (13%)
 Trainer: Jutta Pohl
-Form: L,L,L,L,L
-Distance: neutral
+Weight: 59.0
+Age: 5
+Career: 11/1
+Season2025: 5/0/0
+Form: g5,g9,g8,g9,g9,S8,S15,w1,w6,w10
+DistancePref: bad
+ExpertTip: no
 
 ## Inci
-Jockey: Lilli-Marie Engels (12%)
+Jockey: Lilli-Marie Engels (0%)
 Trainer: Roland Dzubasz
-Form: P,P,P,P,P
-Distance: good
+Weight: 59.0
+Age: 4
+Career: 13/0
+Season2025: 12/0/5
+Form: w2,w3,g6,g2,g5,g2,g2,g7,g4,f5
+DistancePref: good
+ExpertTip: yes
 
 ## Night Sky
-Jockey: Jozef Bojko (13%)
+Jockey: Jozef Bojko (0%)
 Trainer: Anna Schleusner-Fruhriep
-Form: W,L,W,W,L
-Distance: good
+Weight: 58.5
+Age: 6
+Career: 27/4
+Season2025: 12/4/2
+Form: g5,g3,g1,S1,g5,g4,f1,g5,g2,g12
+DistancePref: good
+ExpertTip: no
 
 ## Hiddensee
-Jockey: Thore Hammer-Hansen (24%)
+Jockey: Thore Hammer-Hansen (7%)
 Trainer: Gunter Richter
-Form: P,P,P,P,L
-Distance: neutral
+Weight: 58.0
+Age: 5
+Career: 9/0
+Season2025: 5/0/4
+Form: w12,g3,g2,g2,g3,w12,s11,S12,s5
+DistancePref: neutral
+ExpertTip: yes
 
 ## Invincible Royale
 Jockey: Andrea Ricupa (10%)
 Trainer: Birgit Wagner
-Form: W,P,P,P,W
-Distance: good
+Weight: 57.0
+Age: 5
+Career: 30/3
+Season2026: 6/1/3
+Form: g2,S1,S4,S3,S7,S2,S2,w5,w9,w9
+DistancePref: bad
+ExpertTip: no
 
 ## Aral
-Jockey: Sean Byrne (14%)
+Jockey: Sean Byrne (23%)
 Trainer: Jan Korpas
-Form: W,W,W,P,L
-Distance: good
+Weight: 55.5
+Age: 4
+Career: 14/3
+Season2026: 3/1/1
+Form: S3,S7,S1,S1,w5,w7,g1,w10,f9,g8
+DistancePref: neutral
+ExpertTip: yes
 
 ## Tres Chic
-Jockey: Michal Abik (10%)
+Jockey: Michal Abik (15%)
 Trainer: Jan Korpas
-Form: W,L,L,L,L
-Distance: neutral
+Weight: 55.0
+Age: 4
+Career: 13/1
+Season2026: 4/1/0
+Form: S1,S6,S8,S6,S4,g8,g14,g9,g5,g6
+DistancePref: neutral
+ExpertTip: yes
 
 ## Raameen Solution
-Jockey: Esentur Turganaaly Uulu (9%)
+Jockey: Esentur Turganaaly Uulu (17%)
 Trainer: Roland Dzubasz
-Form: L,L,L,-,-
-Distance: neutral
+Weight: 52.0
+Age: 4
+Career: 3/0
+Season2025: 3/0/0
+Form: w9,w10,g6
+DistancePref: neutral
+ExpertTip: no
 
 ## Anastasia von Aga
-Jockey: Enzo Crublet (8%)
+Jockey: Enzo Crublet (0%)
 Trainer: Anna Schleusner-Fruhriep
-Form: L,L,L,L,L
-Distance: bad
+Weight: 52.0
+Age: 5
+Career: 8/0
+Season2025: 3/0/0
+Form: g12,g6,g6,w3,g5,g6,g3,g10
+DistancePref: bad
+ExpertTip: no
 
+# ═══════════════════════════════════════════════════════
 # Race 5 | 1600m | €30,000 | 10 runners | Hoppegartener Fillies Mile (Listenrennen, Stuten) — 13:22 Uhr
 # Programmtipp: Bella Sinfonia – Ayada – Princess Valentina
+# HINWEIS: Lada hat 6 Siege aus 10 Starts (inkl. Tschechische 1000 Guineas) — aber unbekannte Stärke auf diesem Niveau
+# Ayada: erste Wahl laut Programm trotz langer Pause — war hier vor einem Jahr Zweite
+# Murzabayev Comeback-Ritt auf Ayada
+# ═══════════════════════════════════════════════════════
 
 ## Against All Odds
-Jockey: Benjamin Marie (9%)
+Jockey: Benjamin Marie (13%)
 Trainer: Andreas Suborics
-Form: W,P,P,P,W
-Distance: good
+Weight: 58.0
+Age: 4
+Career: 11/2
+Season2025: 8/2/6
+Form: w1,g1,w2,g3,g2,g3,w3,g2,g7,w2
+DistancePref: good
+ExpertTip: no
 
 ## Aster
-Jockey: Thore Hammer-Hansen (24%)
+Jockey: Thore Hammer-Hansen (7%)
 Trainer: Henk Grewe
-Form: W,P,L,L,P
-Distance: neutral
+Weight: 58.0
+Age: 5
+Career: 13/3
+Season2025: 7/1/1
+Form: w8,g6,g10,g4,g4,g1,w2,g10,g9,g1
+DistancePref: neutral
+ExpertTip: no
 
 ## Ayada
-Jockey: Bauyrzhan Murzabayev (22%)
+Jockey: Bauyrzhan Murzabayev (15%)
 Trainer: Peter Schiergen
-Form: P,W,P,W,P
-Distance: neutral
+Weight: 58.0
+Age: 5
+Career: 8/2
+Season2025: 1/0/1
+Form: g2,w1,s3,w2,w1,w8,g2,w2
+DistancePref: neutral
+ExpertTip: yes
 
 ## Bella Sinfonia
-Jockey: Eduardo Pedroza (16%)
+Jockey: Eduardo Pedroza (25%)
 Trainer: Andreas Wöhler
-Form: W,P,W,L,-
-Distance: good
+Weight: 58.0
+Age: 4
+Career: 4/2
+Season2025: 1/1/0
+Form: w1,w3,g1,g7
+DistancePref: good
+ExpertTip: yes
 
 ## Full of Hope
-Jockey: Martin Seidl (14%)
+Jockey: Martin Seidl (9%)
 Trainer: Christian Sprengel
-Form: L,L,L,P,P
-Distance: neutral
+Weight: 58.0
+Age: 5
+Career: 14/1
+Season2025: 7/0/1
+Form: g7,g8,g5,w6,w8,g4,g3,S4,w7,w5
+DistancePref: neutral
+ExpertTip: no
 
 ## Lada
-Jockey: David Liska (12%)
+Jockey: David Liska (0%)
 Trainer: Vaclav Luka jr.
-Form: W,W,W,W,W
-Distance: neutral
+Weight: 58.0
+Age: 4
+Career: 10/6
+Season2025: 7/3/0
+Form: s8,g1,g4,g4,g4,g1,g1,g1,g1,g1
+DistancePref: neutral
+ExpertTip: no
 
 ## Mala Wyska
-Jockey: Leon Wolff (18%)
+Jockey: Leon Wolff (15%)
 Trainer: Peter Schiergen
-Form: W,P,W,P,W
-Distance: neutral
+Weight: 58.0
+Age: 4
+Career: 8/2
+Season2025: 8/2/2
+Form: s6,w4,w1,g4,s1,g8,g2,w3
+DistancePref: neutral
+ExpertTip: no
 
 ## Miss Oxford
-Jockey: Frida Valle Skar (8%)
+Jockey: Frida Valle Skar (0%)
 Trainer: Satoshi Kobayashi
-Form: L,L,L,W,P
-Distance: bad
+Weight: 58.0
+Age: 5
+Career: 13/2
+Season2025: 6/1/1
+Form: g16,s15,g14,w1,w3,g11,w10,S11,s1,s3
+DistancePref: bad
+ExpertTip: no
 
 ## Morgan Bay
-Jockey: Ebbe Verhestraeten (9%)
+Jockey: Ebbe Verhestraeten (0%)
 Trainer: Amy Murphy
-Form: W,W,L,L,L
-Distance: neutral
+Weight: 58.0
+Age: 4
+Career: 6/2
+Season2025: 5/2/0
+Form: s11,s1,g12,g4,w4,g1
+DistancePref: neutral
+ExpertTip: no
 
 ## Princess Valentina
-Jockey: Jozef Bojko (13%)
+Jockey: Jozef Bojko (0%)
 Trainer: Axel Kleinkorres
-Form: P,P,P,P,P
-Distance: good
+Weight: 58.0
+Age: 5
+Career: 15/1
+Season2025: 6/0/3
+Form: g2,g2,g5,g5,w3,g8,g6,g4,g8,g2
+DistancePref: good
+ExpertTip: yes
 
+# ═══════════════════════════════════════════════════════
 # Race 6 | 2000m | €30,000 | 6 runners | Preis von Dahlwitz (Listenrennen) — 14:00 Uhr
-# Murzabayev Comeback auf Wilko (Vorjahressieger)
+# Programmtipp: offen — stärkstes Feld nach Race 3
+# HINWEIS: Wilko = Vorjahressieger + Murzabayev (Comeback) = starkes Duo
+# Delgardo: 3 Siege 2025, Listensieger, solide
+# Lazio: Dritter Deutsches Derby Gr.I — heutige Distanz könnte seine beste sein
+# Nastaria: Stockholm Cup Gr.III Siegerin 2025 — läuft überraschend über 2000m
+# ═══════════════════════════════════════════════════════
 
 ## Atoso
-Jockey: Michaela Malacova (10%)
+Jockey: Michaela Malacova (20%)
 Trainer: Sarka Schütz
-Form: W,W,L,L,L
-Distance: neutral
+Weight: 59.0
+Age: 7
+Career: 31/8
+Season2025: 7/2/0
+Form: w1,w1,g7,w6,w9,w5,g4,w6,w4,w4
+DistancePref: neutral
+ExpertTip: no
 
 ## Zuckerhut
-Jockey: Leon Wolff (18%)
+Jockey: Leon Wolff (15%)
 Trainer: Peter Schiergen
-Form: W,W,L,W,-
-Distance: good
+Weight: 59.0
+Age: 4
+Career: 4/2
+Season2025: 4/2/0
+Form: g6,w1,g4,g1
+DistancePref: good
+ExpertTip: yes
 
 ## Nastaria
-Jockey: Jozef Bojko (13%)
+Jockey: Jozef Bojko (0%)
 Trainer: Anna Schleusner-Fruhriep
-Form: W,W,P,P,L
-Distance: bad
+Weight: 57.5
+Age: 7
+Career: 40/9
+Season2025: 9/2/2
+Form: w2,g1,g1,g4,g0,g0,g0,g6,g3,w3
+DistancePref: bad
+ExpertTip: no
 
 ## Delgardo
-Jockey: Eduardo Pedroza (16%)
+Jockey: Eduardo Pedroza (25%)
 Trainer: Andreas Wöhler
-Form: W,W,W,P,L
-Distance: good
+Weight: 57.0
+Age: 4
+Career: 9/3
+Season2025: 7/3/1
+Form: w5,g2,g1,g11,w1,w1,g4,g2,g2
+DistancePref: good
+ExpertTip: yes
 
 ## Lazio
-Jockey: Martin Seidl (14%)
+Jockey: Martin Seidl (9%)
 Trainer: Waldemar Hickst
-Form: P,P,P,W,W
-Distance: good
+Weight: 57.0
+Age: 4
+Career: 9/3
+Season2025: 6/0/3
+Form: w4,g4,w3,g3,w7,g2,w1,g1,s1
+DistancePref: good
+ExpertTip: yes
 
 ## Wilko
-Jockey: Bauyrzhan Murzabayev (22%)
+Jockey: Bauyrzhan Murzabayev (15%)
 Trainer: Peter Schiergen
-Form: W,P,W,P,W
-Distance: good
+Weight: 57.0
+Age: 5
+Career: 11/3
+Season2025: 3/1/1
+Form: g4,g2,g1,g7,s2,g1,s2,g1,w4,g2
+DistancePref: good
+ExpertTip: yes
 
+# ═══════════════════════════════════════════════════════
 # Race 7 | 1600m | €8,000 | 9 runners | BBAG Ausgleich III — 14:40 Uhr
 # Programmtipp: Mister Phoenix – Velato – Feuerwehrfelicitas
+# HINWEIS: Mister Phoenix nur 1 Start aber direkt gewonnen — unbekannte Qualität
+# What A Dude: 4 Siege 2025, beste aktuelle Form im Feld
+# Feuerwehrfelicitas: Thore Hammer-Hansen + Gunter Richter (Top-Kombi)
+# ═══════════════════════════════════════════════════════
 
 ## Agent Sim
-Jockey: Hakim Tabet (9%)
+Jockey: Hakim Tabet (50%)
 Trainer: Oliver Schnakenberg
-Form: L,L,W,P,P
-Distance: neutral
+Weight: 60.5
+Age: 7
+Career: 47/8
+Season2025: 11/1/3
+Form: S11,S15,S5,g5,g7,g1,g3,w10,w5,g2
+DistancePref: neutral
+ExpertTip: no
 
 ## Mister Phoenix
-Jockey: David Liska (12%)
+Jockey: David Liska (0%)
 Trainer: Andreas Wöhler
-Form: W,-,-,-,-
-Distance: good
+Weight: 61.5
+Age: 4
+Career: 1/1
+Season2025: 1/1/0
+Form: g1
+DistancePref: good
+ExpertTip: yes
 
 ## Velato
-Jockey: Esentur Turganaaly Uulu (9%)
+Jockey: Esentur Turganaaly Uulu (17%)
 Trainer: Roland Dzubasz
-Form: P,P,P,P,P
-Distance: good
+Weight: 59.5
+Age: 6
+Career: 39/4
+Season2025: 15/0/7
+Form: w7,g3,w7,g3,g4,g2,g3,g11,g2,g10
+DistancePref: good
+ExpertTip: yes
 
 ## Newkidontheblock
-Jockey: Rene Piechulek (20%)
+Jockey: Rene Piechulek (17%)
 Trainer: Oliver Schnakenberg
-Form: W,P,P,P,P
-Distance: good
+Weight: 60.5
+Age: 6
+Career: 44/6
+Season2025: 14/1/6
+Form: S13,S1,w3,g2,g7,g3,g7,g3,g4,g2
+DistancePref: good
+ExpertTip: no
 
 ## Mabel
-Jockey: Leon Wolff (18%)
+Jockey: Leon Wolff (15%)
 Trainer: Roland Dzubasz
-Form: W,P,L,P,L
-Distance: neutral
+Weight: 57.0
+Age: 4
+Career: 9/1
+Season2025: 9/1/4
+Form: g1,w3,g8,f2,g8,g10,w3,g2,g6
+DistancePref: neutral
+ExpertTip: no
 
 ## Needle Drop
-Jockey: Sibylle Vogt (10%)
+Jockey: Sibylle Vogt (19%)
 Trainer: Roland Dzubasz
-Form: W,W,L,L,P
-Distance: neutral
+Weight: 54.5
+Age: 4
+Career: 6/2
+Season2025: 6/2/1
+Form: g2,g1,g1,g7,w7,w8
+DistancePref: neutral
+ExpertTip: no
 
 ## What A Dude
-Jockey: Sean Byrne (14%)
+Jockey: Sean Byrne (23%)
 Trainer: Gunter Richter
-Form: W,W,W,P,W
-Distance: good
+Weight: 54.5
+Age: 6
+Career: 35/6
+Season2025: 9/4/2
+Form: g1,s1,g5,f4,g1,g2,g1,g4,g3,g7
+DistancePref: good
+ExpertTip: no
 
 ## Feuerwehrfelicitas
-Jockey: Thore Hammer-Hansen (24%)
+Jockey: Thore Hammer-Hansen (7%)
 Trainer: Gunter Richter
-Form: W,P,P,P,L
-Distance: good
+Weight: 54.0
+Age: 4
+Career: 6/1
+Season2025: 6/1/3
+Form: w2,g1,g2,g5,g3,g9
+DistancePref: good
+ExpertTip: yes
 
 ## Ginger Ale
-Jockey: Miguel Lopez (11%)
+Jockey: Miguel Lopez (5%)
 Trainer: Jutta Pohl
-Form: P,P,P,L,L
-Distance: neutral
+Weight: 52.5
+Age: 4
+Career: 9/0
+Season2025: 6/0/3
+Form: w10,w2,g3,g2,g9,g9,w9,s4,w2
+DistancePref: neutral
+ExpertTip: no
 
+# ═══════════════════════════════════════════════════════
 # Race 8 | 2200m | €8,200 | 11 runners | Osterausgleich Ausgleich III — 15:20 Uhr
-# Viererwette Garantie 10.000€ — Programmtipp: Ocean Sun–Earl of Lips–Lady Pretend–Mademoiselle Rouge
+# Viererwette: Garantierte Auszahlung 10.000€
+# Programmtipp: Ocean Sun – Earl of Lips – Lady Pretend – Mademoiselle Rouge
+# Experten-Konsens: Ocean Sun + Sky Emperor als "Banker"
+# HINWEIS: Roland Dzubasz hat 5 Pferde in diesem Rennen (Dominanz-Stall)
+# Mariano: 4 Siege + 4 Plätze 2025, stabilste Form im Feld
+# Pericolo: 1.5 Jahre pausiert — totales Fragezeichen
+# ═══════════════════════════════════════════════════════
 
 ## Aleja
-Jockey: Matthew Sebastian Johnson (9%)
+Jockey: Matthew Sebastian Johnson (25%)
 Trainer: Roland Dzubasz
-Form: W,W,W,P,L
-Distance: good
+Weight: 60.5
+Age: 5
+Career: 23/5
+Season2025: 10/3/1
+Form: w6,g12,g6,g1,g9,g10,g1,g1,g2,g4
+DistancePref: good
+ExpertTip: no
 
 ## Earl of Lips
-Jockey: Radek Koplik (9%)
+Jockey: Radek Koplik (0%)
 Trainer: Eva Fabianova
-Form: W,P,P,P,L
-Distance: good
+Weight: 62.5
+Age: 5
+Career: 12/2
+Season2025: 7/1/3
+Form: w3,g6,g3,g3,g4,w4,g1,w12,g1,g3
+DistancePref: good
+ExpertTip: yes
 
 ## Mariano
-Jockey: Miguel Lopez (11%)
+Jockey: Miguel Lopez (5%)
 Trainer: Daniel Paulick
-Form: W,W,W,W,P
-Distance: good
+Weight: 61.0
+Age: 5
+Career: 13/4
+Season2025: 11/4/4
+Form: w1,w2,g2,g4,g1,g12,g1,g3,g1,g3
+DistancePref: good
+ExpertTip: yes
 
 ## Pericolo
-Jockey: Leon Wolff (18%)
+Jockey: Leon Wolff (15%)
 Trainer: Dr. Andreas Bolte
-Form: P,W,W,L,L
-Distance: neutral
+Weight: 59.0
+Age: 6
+Career: 10/2
+Season2025: 0/0/0
+Form: g3,g5,g1,g1,g4,w4,w8,g6,g10,g5
+DistancePref: neutral
+ExpertTip: no
 
 ## Cahaya
-Jockey: Vanesa Csernak (9%)
+Jockey: Vanesa Csernak (5%)
 Trainer: Bohumil Nedorostek
-Form: L,L,P,L,L
-Distance: neutral
+Weight: 55.0
+Age: 4
+Career: 5/0
+Season2025: 5/0/1
+Form: g6,s10,g6,g3,g4
+DistancePref: neutral
+ExpertTip: no
 
 ## Lady Pretend
-Jockey: Lilli-Marie Engels (12%)
+Jockey: Lilli-Marie Engels (0%)
 Trainer: Roland Dzubasz
-Form: W,L,L,-,-
-Distance: neutral
+Weight: 57.5
+Age: 4
+Career: 3/1
+Season2025: 3/1/0
+Form: w9,g4,s1
+DistancePref: neutral
+ExpertTip: yes
 
 ## Ocean Sun
-Jockey: David Liska (12%)
+Jockey: David Liska (0%)
 Trainer: Roland Dzubasz
-Form: W,P,P,P,L
-Distance: good
+Weight: 57.5
+Age: 4
+Career: 7/1
+Season2025: 7/1/3
+Form: g2,g1,g3,g6,g7,g3,g4
+DistancePref: good
+ExpertTip: yes
 
 ## Sky Emperor
-Jockey: Esentur Turganaaly Uulu (9%)
+Jockey: Esentur Turganaaly Uulu (17%)
 Trainer: Roland Dzubasz
-Form: W,P,P,L,L
-Distance: good
+Weight: 55.0
+Age: 9
+Career: 76/8
+Season2025: 19/2/4
+Form: w8,w9,w4,w4,g6,g3,g7,g4,g2,g1
+DistancePref: good
+ExpertTip: yes
 
 ## Koffi Vulcano
-Jockey: Jozef Bojko (13%)
+Jockey: Jozef Bojko (0%)
 Trainer: Martin Mayer
-Form: W,P,P,L,L
-Distance: good
+Weight: 56.5
+Age: 6
+Career: 17/2
+Season2025: 9/1/2
+Form: w8,w2,w7,g4,g7,w4,g8,g2,g1,w4
+DistancePref: good
+ExpertTip: yes
 
 ## Atlant
-Jockey: Michal Abik (10%)
+Jockey: Michal Abik (15%)
 Trainer: Roland Dzubasz
-Form: W,L,L,-,-
-Distance: neutral
+Weight: 53.5
+Age: 4
+Career: 3/1
+Season2025: 3/1/0
+Form: w11,g1,g6
+DistancePref: neutral
+ExpertTip: no
 
 ## Mademoiselle Rouge
-Jockey: Sibylle Vogt (10%)
+Jockey: Sibylle Vogt (19%)
 Trainer: Dr. Andreas Bolte
-Form: W,P,L,L,L
-Distance: neutral
+Weight: 52.0
+Age: 4
+Career: 10/1
+Season2025: 9/1/1
+Form: g5,w1,g6,g4,w0,g2,w13,g7,g8,w11
+DistancePref: neutral
+ExpertTip: yes

@@ -1,0 +1,1 @@
+"""Hoppegarten modular app package."""
